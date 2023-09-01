@@ -1,0 +1,55 @@
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <link th:href="@{'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css'}" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script th:src="@{'https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js'}" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6 offset-3">
+            <form th:action="@{'/additem'}" method="post">
+                <div class="form-group">
+                    <label>
+                        NAME :
+                    </label>
+                    <input type="text" class="form-control" name="item_name">
+                </div>
+                <div class="form-group">
+                    <label>
+                        PRICE :
+                    </label>
+                    <input type="number" class="form-control" name="item_price" value="0" max="10000000" min="0">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success">ADD ITEM</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <table class="table table-stripped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>PRICE</th>
+                    <th>DETAILS</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="it : ${tovary}">
+                    <td th:text="${it.id}"></td>
+                    <td th:text="${it.name}"></td>
+                    <td th:text="${it.price}"></td>
+                    <td><a href="#" class="btn btn-info btn-sm">DETAILS</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
